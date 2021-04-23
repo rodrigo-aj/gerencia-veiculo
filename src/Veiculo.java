@@ -23,14 +23,14 @@ public abstract class Veiculo {
     public abstract double calcularImposto(String tipoCombustivel);
 
     public String imprimir(Veiculo veiculo) {
-        return "\nDados do veículo:\n" +
-        "Modelo: " + veiculo.Modelo + "\n" + 
-        "Marca: " + veiculo.Marca + "\n" + 
-        "Ano de fabricacao: " + veiculo.AnoFabricacao + "\n" + 
-        "Valor Mercado: " + veiculo.ValorMercado  + "\n" + 
-        "Placa: " + veiculo.Placa + "\n" + 
-        "Tipo Combustivel: " + veiculo.TipoCombustivel + "\n" + 
-        "------------";
+        return "\nDados do veículo:" +
+        "\nModelo: " + veiculo.Modelo + 
+        "\nMarca: " + veiculo.Marca +  
+        "\nAno de fabricacao: " + veiculo.AnoFabricacao +   
+        "\nValor Mercado: " + veiculo.ValorMercado  +  
+        "\nPlaca: " + veiculo.Placa +  
+        "\nTipo Combustivel: " + veiculo.TipoCombustivel + 
+        "\n------------";
     }
 
     public String getModelo() {
