@@ -23,6 +23,7 @@ public class AppVeiculo {
             menu = Integer.parseInt(teclado.nextLine());
 
             switch (menu) {
+
             case 1:
                 System.out.println("Informe o modelo do veículo: ");
                 modelo = teclado.nextLine();
@@ -51,7 +52,7 @@ public class AppVeiculo {
                 System.out.println("\nDigite a placa do veículo a ser removido: ");
                 placa = teclado.nextLine();
 
-                msg = carro.remmover(placa) ? "Veículo removido com sucesso" : "Placa informada não localizada";
+                msg = carro.remmover(placa) ? "\nVeículo removido com sucesso" : "\nPlaca informada não localizada";
                 System.out.println(msg);
                 break;
 
@@ -59,7 +60,7 @@ public class AppVeiculo {
                 System.out.println("\nDigite a placa do veículo a ser pesquisado: ");
                 placa = teclado.nextLine();
                 Veiculo buscaCarro = carro.buscarPorPlaca(placa);
-                msg = buscaCarro != null ? carro.imprimir(buscaCarro) : "Placa informada não localizada";
+                msg = buscaCarro != null ? carro.imprimir(buscaCarro) : "\nPlaca informada não localizada";
                 System.out.println(msg);
                 break;
 
@@ -68,12 +69,15 @@ public class AppVeiculo {
                 tipoCombustivel = teclado.nextLine();
                 System.out.println(carro.listarVeiculosPorCombustivel(tipoCombustivel));
                 break;
+
             case 5:
                 System.out.println(carro.listarVeiculos());
                 break;
 
             case 6:
-                System.out.println("\n--OPÇÃO NÃO IMPLEMENTADA6-- ");
+                System.out.println("\nDigite a placa do veículo a ser pesquisado: ");
+                placa = teclado.nextLine();
+                System.out.println(carro.obterValorImposto(placa));
                 break;
 
             case 7:

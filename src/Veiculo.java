@@ -19,8 +19,7 @@ public abstract class Veiculo {
 
     }
 
-    public abstract double calcularImposto(int anoFabricacao);
-    public abstract double calcularImposto(String tipoCombustivel);
+    public abstract double calcularImposto(String placa);
 
     public String imprimir(Veiculo veiculo) {
         return "\nDados do veículo:" +
