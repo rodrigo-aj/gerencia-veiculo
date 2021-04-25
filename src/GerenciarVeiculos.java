@@ -32,9 +32,8 @@ public class GerenciarVeiculos extends Veiculo {
     }
 
     public boolean remmover(String placa) {
-        // usando Iterator para evitar ConcurrentModificationException, pois a lista era
-        // modificada enquanto em loop
-        // if you try to modify a collection while iterating over it
+        // usando Iterator para evitar ConcurrentModificationException, pois a lista era modificada enquanto em loop
+        // will break if you try to modify a collection while iterating over it
 
         boolean retorno = false;
 
@@ -76,16 +75,16 @@ public class GerenciarVeiculos extends Veiculo {
             }
         }
 
-        return listaVeiculos.length() > 0 ? listaVeiculos.toString() : "Nada encontrado!";
+        return listaVeiculos.length() > 0 ? listaVeiculos.toString() : "Nada encontrado!\n";
     }
 
-    public String obterValorImposto(String placa) {
+    public void obterValorImposto(String placa) {
         double valorImposto = this.calcularImposto(placa);
 
         if (valorImposto == -1) {
-            return "\nPlaca informada não localizada";
-        } else {
-            return "\nValor do imposto do veículo é de: R$ " + valorImposto;
+            System.out.println("\nPlaca informada não localizada\n");
+        } else {    
+            System.out.printf("Valor do imposto do veículo é de: R$ %.2f\n", valorImposto);
         }
     }
 
@@ -111,8 +110,8 @@ public class GerenciarVeiculos extends Veiculo {
                 || veiculo.getTipoCombustivel().equalsIgnoreCase("flex")) {
 
             return veiculo.getValorMercado() * 0.04;
-        } else { //Demais combustíveis: imposto é 3% do valor de mercado;
-
+        } else { 
+            //Demais combustíveis: imposto é 3% do valor de mercado;
             return veiculo.getValorMercado() * 0.03;
         }
     }

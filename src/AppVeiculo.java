@@ -77,7 +77,8 @@ public class AppVeiculo {
             case 6:
                 System.out.println("\nDigite a placa do veículo a ser pesquisado: ");
                 placa = teclado.nextLine();
-                System.out.println(carro.obterValorImposto(placa));
+                carro.obterValorImposto(placa);
+                //System.out.println(carro.obterValorImposto(placa));
                 break;
 
             case 7:
