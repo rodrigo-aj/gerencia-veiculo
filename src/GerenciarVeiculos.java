@@ -5,8 +5,7 @@ public class GerenciarVeiculos extends Veiculo {
 
     private ArrayList<Veiculo> veiculos;
 
-    public GerenciarVeiculos(String Modelo, String Marca, int AnoFabricacao, double ValorMercado, String Placa,
-            String TipoCombustivel) {
+    public GerenciarVeiculos(String Modelo, String Marca, int AnoFabricacao, double ValorMercado, String Placa, String TipoCombustivel) {
         super(Modelo, Marca, AnoFabricacao, ValorMercado, Placa, TipoCombustivel);
         veiculos = new ArrayList<>();
     }

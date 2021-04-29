@@ -26,7 +26,7 @@ public abstract class Veiculo {
         "\nModelo: " + veiculo.Modelo + 
         "\nMarca: " + veiculo.Marca +  
         "\nAno de fabricacao: " + veiculo.AnoFabricacao +   
-        "\nValor Mercado: " + veiculo.ValorMercado  +  
+        "\nValor Mercado: " +   String.format("%.2f", veiculo.ValorMercado)  +  
         "\nPlaca: " + veiculo.Placa +  
         "\nTipo Combustivel: " + veiculo.TipoCombustivel + 
         "\n------------";

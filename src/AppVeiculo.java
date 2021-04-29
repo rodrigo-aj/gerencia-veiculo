@@ -9,6 +9,7 @@ public class AppVeiculo {
         int anoFabricacao;
         double valorMercado;
         Scanner teclado;
+        
         do {
             teclado = new Scanner(System.in);
 
@@ -43,8 +44,20 @@ public class AppVeiculo {
                 System.out.println("Informe o valor de mercado do veículo: ");
                 valorMercado = teclado.nextDouble();
 
-                carro.adicionar(
-                        new GerenciarVeiculos(modelo, marca, anoFabricacao, valorMercado, placa, tipoCombustivel));
+                carro.adicionar(new GerenciarVeiculos(modelo, marca, anoFabricacao, valorMercado, placa, tipoCombustivel));
+
+                /*  --->TESTES<--- */
+                // carro.adicionar(new GerenciarVeiculos("modelo1", "marca1", 2011, 11100, "aaa", "gasolina"));
+                // carro.adicionar(new GerenciarVeiculos("modelo2", "marca2", 2012, 222000, "bbb", "gasolina"));
+                // carro.adicionar(new GerenciarVeiculos("modelo3", "marca3", 2013, 333000, "ccc", "gasolina"));
+                // carro.adicionar(new GerenciarVeiculos("modelo4", "marca4", 2014, 444000, "ddd", "flex"));
+                // carro.adicionar(new GerenciarVeiculos("modelo5", "marc5", 2015, 555000, "eee", "flex"));
+                // carro.adicionar(new GerenciarVeiculos("modelo6", "marc6", 2016, 666000, "fff", "flex"));
+                // carro.adicionar(new GerenciarVeiculos("modelo7", "marca7", 2017, 777000, "ggg", "diesel"));
+                // carro.adicionar(new GerenciarVeiculos("modelo8", "marca8", 2018, 888000, "hhh", "diesel"));
+                // carro.adicionar(new GerenciarVeiculos("modelo9", "marca9", 2019, 999000, "iii", "diesel"));
+                // carro.adicionar(new GerenciarVeiculos("modelo10", "marca10", 2020, 1000000, "jjj", "alcool"));
+                // System.out.println("Inserção finalizada!");
                 break;
 
             case 2:
@@ -78,7 +91,6 @@ public class AppVeiculo {
                 System.out.println("\nDigite a placa do veículo a ser pesquisado: ");
                 placa = teclado.nextLine();
                 carro.obterValorImposto(placa);
-                //System.out.println(carro.obterValorImposto(placa));
                 break;
 
             case 7:
