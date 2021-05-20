@@ -13,13 +13,15 @@ public class GerenciarVeiculos {
     }
 
     public String listarVeiculos() {
-        String saida = "";
+        StringBuilder listaVeiculos = new StringBuilder();
+
+        System.out.println("Quantidade de veículos cadastrados: " + veiculos.size());
 
         for (Veiculo v : veiculos) {
-            saida += v.imprimir() + "\n";
+            listaVeiculos.append(v.imprimir());
         }
 
-        return saida;
+        return listaVeiculos.toString();
     }
 
     public boolean remover(String placa) {
@@ -73,10 +75,6 @@ public class GerenciarVeiculos {
 
         Veiculo v = this.buscarPorPlaca(placa);
 
-        if (v == null) {
-            return -1;
-        } else {
-            return v.calcularImposto();
-        }
+        return (v == null ? -1 : v.calcularImposto());
     }
 }
