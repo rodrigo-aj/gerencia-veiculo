@@ -1,63 +1,59 @@
 public abstract class Veiculo {
-    private String Modelo;
-    private String Marca;
-    private int AnoFabricacao;
-    private double ValorMercado;
-    private String Placa;
-    private String TipoCombustivel;
+    private String modelo;
+    private String marca;
+    private int anoFabricacao;
+    private double valorMercado;
+    private String placa;
+    private String tipoCombustivel;
 
-    public Veiculo(String Modelo, String Marca, int AnoFabricacao, double ValorMercado, String Placa, String TipoCombustivel) {
-        this.Modelo = Modelo;
-        this.Marca = Marca;
-        this.AnoFabricacao = AnoFabricacao;
-        this.ValorMercado = ValorMercado;
-        this.Placa = Placa;
-        this.TipoCombustivel = TipoCombustivel;
+    public Veiculo(String modelo, String marca, int anoFabricacao, double valorMercado, String placa, String tipoCombustivel) {
+        this.modelo = modelo;
+        this.marca = marca;
+        this.anoFabricacao = anoFabricacao;
+        this.valorMercado = valorMercado;
+        this.placa = placa;
+        this.tipoCombustivel = tipoCombustivel;
     }
 
-    public Veiculo() {
+    public abstract double calcularImposto();
 
-    }
-
-    public abstract double calcularImposto(String placa);
-
-    public String imprimir(Veiculo veiculo) {
+    public String imprimir() {
         return "\nDados do veículo:" +
-        "\nModelo: " + veiculo.Modelo + 
-        "\nMarca: " + veiculo.Marca +  
-        "\nAno de fabricacao: " + veiculo.AnoFabricacao +   
-        "\nValor Mercado: " +   String.format("%.2f", veiculo.ValorMercado)  +  
-        "\nPlaca: " + veiculo.Placa +  
-        "\nTipo Combustivel: " + veiculo.TipoCombustivel + 
-        "\n------------";
+                "\nModelo: " + this.getModelo() +
+                "\nMarca: " + this.getMarca() +
+                "\nAno de fabricacao: " + this.getAnoFabricacao() +
+                "\nValor Mercado: " + String.format("%.2f", this.getValorMercado()) +
+                "\nPlaca: " + this.getPlaca() +
+                "\nTipo Combustivel: " + this.getTipoCombustivel() +
+                "\n------------";
     }
 
     public String getModelo() {
-        return this.Modelo;
+        return this.modelo;
     }
 
     public String getMarca() {
-        return this.Marca;
+        return this.marca;
     }
 
     public int getAnoFabricacao() {
-        return this.AnoFabricacao;
+        return this.anoFabricacao;
     }
 
     public double getValorMercado() {
-        return this.ValorMercado;
+        return this.valorMercado;
     }
 
     public void setValorMercado(double ValorMercado) {
-        this.ValorMercado = ValorMercado;
+        this.valorMercado = ValorMercado;
     }
 
     public String getPlaca() {
-        return this.Placa;
+        return this.placa;
     }
 
     public String getTipoCombustivel() {
-        return this.TipoCombustivel;
+        return this.tipoCombustivel;
     }
-    
+
 }

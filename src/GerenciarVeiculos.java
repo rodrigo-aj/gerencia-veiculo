@@ -1,17 +1,11 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class GerenciarVeiculos extends Veiculo {
-
+public class GerenciarVeiculos {
     private ArrayList<Veiculo> veiculos;
 
-    public GerenciarVeiculos(String Modelo, String Marca, int AnoFabricacao, double ValorMercado, String Placa, String TipoCombustivel) {
-        super(Modelo, Marca, AnoFabricacao, ValorMercado, Placa, TipoCombustivel);
-        veiculos = new ArrayList<>();
-    }
-
     public GerenciarVeiculos() {
-        veiculos = new ArrayList<>();
+        this.veiculos = new ArrayList<>();
     }
 
     public void adicionar(Veiculo veiculo) {
@@ -19,18 +13,16 @@ public class GerenciarVeiculos extends Veiculo {
     }
 
     public String listarVeiculos() {
-        StringBuilder listaVeiculos = new StringBuilder();
-
-        System.out.println("Quantidade de veículos cadastrados: " + veiculos.size());
+        String saida = "";
 
         for (Veiculo v : veiculos) {
-            listaVeiculos.append(super.imprimir(v));
+            saida += v.imprimir() + "\n";
         }
 
-        return listaVeiculos.toString();
+        return saida;
     }
 
-    public boolean remmover(String placa) {
+    public boolean remover(String placa) {
         // usando Iterator para evitar ConcurrentModificationException, pois a lista era modificada enquanto em loop
         // will break if you try to modify a collection while iterating over it
 
@@ -70,49 +62,21 @@ public class GerenciarVeiculos extends Veiculo {
         for (Veiculo v : veiculos) {
 
             if (v.getTipoCombustivel().equalsIgnoreCase(combustivel)) {
-                listaVeiculos.append(super.imprimir(v));
+                listaVeiculos.append(v.imprimir());
             }
         }
 
         return listaVeiculos.length() > 0 ? listaVeiculos.toString() : "Nada encontrado!\n";
     }
 
-    public void obterValorImposto(String placa) {
-        double valorImposto = this.calcularImposto(placa);
+    public double obterValorImposto(String placa) {
 
-        if (valorImposto == -1) {
-            System.out.println("\nPlaca informada não localizada\n");
-        } else {    
-            System.out.printf("Valor do imposto do veículo é de: R$ %.2f\n", valorImposto);
-        }
-    }
+        Veiculo v = this.buscarPorPlaca(placa);
 
-    @Override
-    public double calcularImposto(String placa) {
-
-        Veiculo veiculo = this.buscarPorPlaca(placa);
-
-        if (veiculo == null){
-
+        if (v == null) {
             return -1;
-        }
-
-        // Carros com mais de 20 anos são isentos (ou seja, imposto é zero);
-        if ((2021 - veiculo.getAnoFabricacao()) > 20) {
-
-            return 0;
-        }
-
-        // Carros movidos a gasolina, diesel e flex devem pagar 4% do valor de mercado como imposto;
-        if (veiculo.getTipoCombustivel().equalsIgnoreCase("gasolina")
-                || veiculo.getTipoCombustivel().equalsIgnoreCase("diesel")
-                || veiculo.getTipoCombustivel().equalsIgnoreCase("flex")) {
-
-            return veiculo.getValorMercado() * 0.04;
-        } else { 
-            //Demais combustíveis: imposto é 3% do valor de mercado;
-            return veiculo.getValorMercado() * 0.03;
+        } else {
+            return v.calcularImposto();
         }
     }
-
 }

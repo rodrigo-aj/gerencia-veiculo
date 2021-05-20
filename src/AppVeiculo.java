@@ -4,12 +4,12 @@ public class AppVeiculo {
 
     public static void main(String[] args) {
         GerenciarVeiculos carro = new GerenciarVeiculos();
-        int menu;
+
         String modelo, marca, placa, tipoCombustivel, msg;
-        int anoFabricacao;
+        int menu, anoFabricacao;
         double valorMercado;
         Scanner teclado;
-        
+
         do {
             teclado = new Scanner(System.in);
 
@@ -25,80 +25,88 @@ public class AppVeiculo {
 
             switch (menu) {
 
-            case 1:
-                System.out.println("Informe o modelo do veículo: ");
-                modelo = teclado.nextLine();
+                case 1:
+//                System.out.println("Informe o modelo do veículo: ");
+//                modelo = teclado.nextLine();
+//
+//                System.out.println("Informe a marca do veículo: ");
+//                marca = teclado.nextLine();
+//
+//                System.out.println("Informe a placa do veículo: ");
+//                placa = teclado.nextLine();
+//
+//                System.out.println("Informe o tipo de combustível do veículo: ");
+//                tipoCombustivel = teclado.nextLine();
+//
+//                System.out.println("Informe o ano do veículo: ");
+//                anoFabricacao = teclado.nextInt();
+//
+//                System.out.println("Informe o valor de mercado do veículo: ");
+//                valorMercado = teclado.nextDouble();
+//
+//                carro.adicionar(new VeiculoGenerico(modelo, marca, anoFabricacao, valorMercado, placa, tipoCombustivel));
 
-                System.out.println("Informe a marca do veículo: ");
-                marca = teclado.nextLine();
+                    /*  --->TESTES<--- */
+                    carro.adicionar(new VeiculoGenerico("modelo1", "marca1", 2011, 11100, "aaa", "gasolina"));
+                    carro.adicionar(new VeiculoGenerico("modelo2", "marca2", 2012, 222000, "bbb", "gasolina"));
+                    carro.adicionar(new VeiculoGenerico("modelo3", "marca3", 2013, 333000, "ccc", "gasolina"));
+                    carro.adicionar(new VeiculoGenerico("modelo4", "marca4", 2014, 444000, "ddd", "flex"));
+                    carro.adicionar(new VeiculoGenerico("modelo5", "marc5", 2015, 555000, "eee", "flex"));
+                    carro.adicionar(new VeiculoGenerico("modelo6", "marc6", 2016, 666000, "fff", "flex"));
+                    carro.adicionar(new VeiculoGenerico("modelo7", "marca7", 2017, 777000, "ggg", "diesel"));
+                    carro.adicionar(new VeiculoGenerico("modelo8", "marca8", 2018, 888000, "hhh", "diesel"));
+                    carro.adicionar(new VeiculoGenerico("modelo9", "marca9", 2019, 999000, "iii", "diesel"));
+                    carro.adicionar(new VeiculoGenerico("modelo10", "marca10", 2020, 1000000, "jjj", "alcool"));
 
-                System.out.println("Informe a placa do veículo: ");
-                placa = teclado.nextLine();
+                    System.out.println("Inserção finalizada!");
+                    break;
 
-                System.out.println("Informe o tipo de combustível do veículo: ");
-                tipoCombustivel = teclado.nextLine();
+                case 2:
+                    System.out.println(carro.listarVeiculos());
+                    System.out.println("\nDigite a placa do veículo a ser removido: ");
+                    placa = teclado.nextLine();
 
-                System.out.println("Informe o ano do veículo: ");
-                anoFabricacao = teclado.nextInt();
+                    msg = carro.remover(placa) ? "\nVeículo removido com sucesso" : "\nPlaca informada não localizada";
+                    System.out.println(msg);
+                    break;
 
-                System.out.println("Informe o valor de mercado do veículo: ");
-                valorMercado = teclado.nextDouble();
+                case 3:
+                    System.out.println("\nDigite a placa do veículo a ser pesquisado: ");
+                    placa = teclado.nextLine();
+                    Veiculo buscaCarro = carro.buscarPorPlaca(placa);
+                    msg = buscaCarro != null ? buscaCarro.imprimir() : "\nPlaca informada não localizada";
+                    System.out.println(msg);
+                    break;
 
-                carro.adicionar(new GerenciarVeiculos(modelo, marca, anoFabricacao, valorMercado, placa, tipoCombustivel));
+                case 4:
+                    System.out.println("\nDigite o tipo de combustível: ");
+                    tipoCombustivel = teclado.nextLine();
+                    System.out.println(carro.listarVeiculosPorCombustivel(tipoCombustivel));
+                    break;
 
-                /*  --->TESTES<--- */
-                // carro.adicionar(new GerenciarVeiculos("modelo1", "marca1", 2011, 11100, "aaa", "gasolina"));
-                // carro.adicionar(new GerenciarVeiculos("modelo2", "marca2", 2012, 222000, "bbb", "gasolina"));
-                // carro.adicionar(new GerenciarVeiculos("modelo3", "marca3", 2013, 333000, "ccc", "gasolina"));
-                // carro.adicionar(new GerenciarVeiculos("modelo4", "marca4", 2014, 444000, "ddd", "flex"));
-                // carro.adicionar(new GerenciarVeiculos("modelo5", "marc5", 2015, 555000, "eee", "flex"));
-                // carro.adicionar(new GerenciarVeiculos("modelo6", "marc6", 2016, 666000, "fff", "flex"));
-                // carro.adicionar(new GerenciarVeiculos("modelo7", "marca7", 2017, 777000, "ggg", "diesel"));
-                // carro.adicionar(new GerenciarVeiculos("modelo8", "marca8", 2018, 888000, "hhh", "diesel"));
-                // carro.adicionar(new GerenciarVeiculos("modelo9", "marca9", 2019, 999000, "iii", "diesel"));
-                // carro.adicionar(new GerenciarVeiculos("modelo10", "marca10", 2020, 1000000, "jjj", "alcool"));
-                // System.out.println("Inserção finalizada!");
-                break;
+                case 5:
+                    System.out.println(carro.listarVeiculos());
+                    break;
 
-            case 2:
-                System.out.println(carro.listarVeiculos());
-                System.out.println("\nDigite a placa do veículo a ser removido: ");
-                placa = teclado.nextLine();
+                case 6:
+                    System.out.println("\nDigite a placa do veículo a ser pesquisado: ");
+                    placa = teclado.nextLine();
 
-                msg = carro.remmover(placa) ? "\nVeículo removido com sucesso" : "\nPlaca informada não localizada";
-                System.out.println(msg);
-                break;
+                    double valorImposto = carro.obterValorImposto(placa);
 
-            case 3:
-                System.out.println("\nDigite a placa do veículo a ser pesquisado: ");
-                placa = teclado.nextLine();
-                Veiculo buscaCarro = carro.buscarPorPlaca(placa);
-                msg = buscaCarro != null ? carro.imprimir(buscaCarro) : "\nPlaca informada não localizada";
-                System.out.println(msg);
-                break;
+                    if (valorImposto == -1) {
+                        System.out.println("\nPlaca informada não localizada\n");
+                    } else {
+                        System.out.printf("Valor do imposto do veículo é de: R$ %.2f\n", valorImposto);
+                    }
+                    break;
 
-            case 4:
-                System.out.println("\nDigite o tipo de combustível: ");
-                tipoCombustivel = teclado.nextLine();
-                System.out.println(carro.listarVeiculosPorCombustivel(tipoCombustivel));
-                break;
+                case 7:
+                    break;
 
-            case 5:
-                System.out.println(carro.listarVeiculos());
-                break;
-
-            case 6:
-                System.out.println("\nDigite a placa do veículo a ser pesquisado: ");
-                placa = teclado.nextLine();
-                carro.obterValorImposto(placa);
-                break;
-
-            case 7:
-                break;
-
-            default:
-                System.out.println("Opção inválida");
-                break;
+                default:
+                    System.out.println("Opção inválida");
+                    break;
             }
 
         } while (menu != 7);
